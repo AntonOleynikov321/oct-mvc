@@ -2,6 +2,6 @@
 
 namespace core;
 
-class Controller {
-  
+abstract class Controller {
+    abstract public function action_index();
 }
