@@ -18,11 +18,15 @@ class ControllerTasks extends Controller {
     }
 
     public function action_create() {
-        $this->view->render('task_add_view');  
+        $this->view->render('task_add_view');
     }
-    
+
     public function action_add() {
-       $task_text = filter_input(INPUT_POST, 'task_text'); 
-       
+//        if ($_SERVER['REQUEST_METHOD'] = 'POST') {
+//
+//            $task_text = filter_input(INPUT_POST, 'task_text');
+//            $this->view->render('tasks_index_view');
+//        }
+//    }
     }
 }
