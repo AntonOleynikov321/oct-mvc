@@ -7,23 +7,9 @@ use mysqli;
 
 class ModelTasks extends Model {
 
-    /**
-     *
-     * @var mysqli
-     */
-    protected $db;
-
     public function __construct() {
-        $this->db = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_NAME);
-    }
-
-    public function all() {
-        $query = "select * from tasks;";
-        $result = $this->db->query($query);
-        if (!$result) {
-            return false;
-        }
-        return $result->fetch_all(MYSQLI_ASSOC);
+        parent::__construct();
+        $this->table = 'tasks';
     }
 
 }
