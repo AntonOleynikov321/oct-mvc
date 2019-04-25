@@ -4,3 +4,5 @@
     <?php endforeach; ?>
 
 </ul>
+
+<button onclick="location.href='tasks/create'">Add</button>
