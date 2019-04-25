@@ -19,7 +19,9 @@ document.getElementById('courses').onclick = function () {
     xhr.send();
 };
 
-function getQuestions() {
+
+
+document.getElementById('questions-btn').onclick = function () {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/api/questions');
     xhr.onreadystatechange = function () {
@@ -27,7 +29,16 @@ function getQuestions() {
             if (this.status === 200) {
                 var json_text = this.responseText;
                 var questions = JSON.parse(json_text);
-                return questions;
+                console.log(questions);
+                //TODO show in table
+                var table = document.querySelector('#questions tbody');
+                table.innerHTML = '';
+                for (var i = 0; i < questions.length; i++) {
+                    table.innerHTML += '<td>' + questions[i].id +
+                            '</td>' + '<td>' + questions[i].author +
+                            '</td>' + '<td>' + questions[i].text +
+                            '</td>';
+                }
             } else {
                 return false;
             }
@@ -35,9 +46,4 @@ function getQuestions() {
     };
 
     xhr.send();
-}
-
-document.getElementById('questions-btn').onclick= function(){
-    var questions = getQuestions();
-    console.log(questions);
 };
