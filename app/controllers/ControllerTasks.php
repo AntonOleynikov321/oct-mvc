@@ -18,15 +18,27 @@ class ControllerTasks extends Controller {
     }
 
     public function action_create() {
-        $this->view->render('task_add_view');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->action_add();
+        } else {
+            $this->view->render('task_add_view');
+        }
     }
 
     public function action_add() {
-//        if ($_SERVER['REQUEST_METHOD'] = 'POST') {
-//
-//            $task_text = filter_input(INPUT_POST, 'task_text');
-//            $this->view->render('tasks_index_view');
-//        }
-//    }
+        $task_text = filter_input(INPUT_POST, 'task_text');
+   
+            $this->model->save($task_text);
+            $url = $_SERVER['HTTP_ORIGIN'] . '/tasks';
+            header("Location: " . $url);
+      
     }
+    public function action_edit(){
+        $this->view->render('task_edit_view');
+        
+    }
+    public function action_delete() {
+        $this->model->delete();
+    }
+
 }

@@ -11,5 +11,10 @@ class ModelTasks extends Model {
         parent::__construct();
         $this->table = 'tasks';
     }
+    
+    public function save($text) {
+	$query = "INSERT INTO `tasks` (`id`, `name`) VALUES (NULL, '$text');";
+	$result = $this->db->query($query);
+    }
 
 }
