@@ -24,4 +24,12 @@ class ControllerApi extends Controller{
        header("Content-type: application/json;");
        echo $json_text;
     }
+    
+    public function action_addquestion() {
+        //TODO
+        $question = filter_input_array(INPUT_POST);
+        var_dump($question);
+        $this->model->add($question);
+        
+    }
 }

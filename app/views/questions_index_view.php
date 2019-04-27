@@ -15,7 +15,7 @@
 <h2>New question</h2>
 <form name="question">
     <label>Your name:<input type="text" name="author" required/></label>
-    <label>Your question:<textarea name="area" required></textarea></label>
+    <label>Your question:<textarea name="text" required></textarea></label>
     <input type="submit"/>
 </form>
 <script src="js/questions.js"></script>

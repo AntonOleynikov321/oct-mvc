@@ -10,4 +10,8 @@ class ModelApi extends Model{
         parent::__construct();
         $this->table = 'questions';
     }
+    public function add($question) {
+        $query = 'INSERT INTO '.$this->table." values (null,'{$question['author']}','{$question['text']}');";
+        $this->db->query($query);
+    }
 }

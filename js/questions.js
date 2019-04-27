@@ -21,7 +21,7 @@
 
 
 
-function showQuestions () {
+function showQuestions() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/api/questions');
     xhr.onreadystatechange = function () {
@@ -46,7 +46,35 @@ function showQuestions () {
     };
 
     xhr.send();
-};
+}
+;
 
 showQuestions();
 
+
+function sendQuestion(author,text){
+        var post_data = 'author=' + author + '&text=' + text;
+            var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/api/addquestion');
+    xhr.onreadystatechange = function () {
+        if (this.readyState === 4) {
+            if (this.status === 200) {
+           showQuestions();
+            } 
+        }
+    };
+    xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+    xhr.send(post_data);
+}
+
+
+document.forms.question.onsubmit = function (event) {
+    var form_elements = this.elements;
+    var author = form_elements.author.value;
+//    form_elements.author.value = '';
+    var text = form_elements.text.value;
+//    form_elements.text.value = '';
+    this.reset();
+    sendQuestion(author,text);
+    event.preventDefault();
+};
