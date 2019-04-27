@@ -1,27 +1,27 @@
 //https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5
 
-document.getElementById('courses').onclick = function () {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5');
-    xhr.onreadystatechange = function () {
-        if (this.readyState === 4) {
-            if (this.status === 200) {
-                var json_text = this.responseText;
-                var courses = JSON.parse(json_text);
-                console.log(courses);
-            }
+//document.getElementById('courses').onclick = function () {
+//    var xhr = new XMLHttpRequest();
+//    xhr.open('GET', 'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5');
+//    xhr.onreadystatechange = function () {
+//        if (this.readyState === 4) {
+//            if (this.status === 200) {
+//                var json_text = this.responseText;
+//                var courses = JSON.parse(json_text);
+//                console.log(courses);
+//            }
+//
+//        } else {
+//
+//        }
+//    };
+//
+//    xhr.send();
+//};
 
-        } else {
-
-        }
-    };
-
-    xhr.send();
-};
 
 
-
-document.getElementById('questions-btn').onclick = function () {
+function showQuestions () {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/api/questions');
     xhr.onreadystatechange = function () {
@@ -47,3 +47,5 @@ document.getElementById('questions-btn').onclick = function () {
 
     xhr.send();
 };
+
+showQuestions();
