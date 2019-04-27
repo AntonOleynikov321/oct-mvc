@@ -14,4 +14,9 @@ class ModelApi extends Model{
         $query = 'INSERT INTO '.$this->table." values (null,'{$question['author']}','{$question['text']}');";
         $this->db->query($query);
     }
+    
+    public function delete($id){
+        $query = "DELETE FROM ".$this->table." where id=".$id.";";
+        $this->db->query($query);
+    }
 }
